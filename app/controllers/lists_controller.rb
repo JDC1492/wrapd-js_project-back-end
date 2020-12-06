@@ -1,23 +1,23 @@
 class ListsController < ApplicationController
 
     def index
-    
-    end    
         
-    def new
-
-    end
-
-    def create
-
-    end
+    end    
 
     def show
 
     end
+    
+    def create
 
-    def edit
+    end
+
+    def update
         
     end
 
+    def destroy
+
+    end
+    
 end
