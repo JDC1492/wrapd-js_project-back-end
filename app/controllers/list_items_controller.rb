@@ -7,11 +7,19 @@ class ListItemsController < ApplicationController
     end    
 
     def show
-        render json: @list_item.to_json(include: [:list], except: [:updated_at, :created_at])
+        if @list_item
+            render json: @list_item.to_json(include: [:list], except: [:updated_at, :created_at])
+        else
+            render json: { message: "No list item found with that ID"}
+        end
     end
     
     def create
-
+        @list_item = ListItem.new(list_item_params)
+        if
+            render json: @list_item, status: :created, location: @list_item
+        else
+            render json: @list_item.errors, status: :unprocessable_entity
     end
 
     def update
@@ -19,6 +27,7 @@ class ListItemsController < ApplicationController
     end
 
     def destroy
+        @list_item.destroy
 
     end
 

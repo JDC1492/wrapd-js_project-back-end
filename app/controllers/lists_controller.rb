@@ -19,8 +19,8 @@ class ListsController < ApplicationController
 
         if @list.save
             render json: @list, status: :created, location: @piglet
-        #   else
-        #     render json: @list.errors, status: :unprocessable_entity
+          else
+            render json: @list.errors, status: :unprocessable_entity
         end
     end
 
@@ -29,6 +29,7 @@ class ListsController < ApplicationController
     end
 
     def destroy
+        @list.destroy
 
     end
 
