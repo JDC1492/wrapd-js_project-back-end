@@ -2,8 +2,8 @@ class ListItemsController < ApplicationController
     before_action :set_list_item, only: [:show, :edit, :update, :destroy]
 
     def index
-        @list_items = ListItem.all
-        render json: @list_items.as_json
+        list_items = ListItem.all
+        render json: list_items.as_json
     end    
 
     def show
