@@ -3,11 +3,11 @@ class ListItemsController < ApplicationController
 
     def index
         list_items = ListItem.all
-        render json: list_items.as_json
+        render json: list_items.as_json(include: [:list])
     end    
 
     def show
-
+        render json: list_items.as_json(include: [:list])
     end
     
     def create
@@ -25,7 +25,7 @@ class ListItemsController < ApplicationController
     private
     
     def set_list_item
-        @list_items = ListItem.find_by_id(params[:id])
+        list_item = ListItem.find_by_id(params[:id])
     end
         
     def list_item_params
