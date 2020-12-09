@@ -7,18 +7,18 @@ class ListsController < ApplicationController
     end    
 
     def show
-        if @list
+        
             render json: @list.to_json(include: {list_items: {except: [:created_at, :updated_at]}})
-        else
-            render json: { message: "No list found with that ID"}
-        end
+        # else
+        #     render json: { message: "No list found with that ID"}
+       
     end
     
     def create
         @list = List.new(list_params)
 
         if @list.save
-            render json: @list, status: :created, location: @piglet
+            render json: @list, status: :created, location: @list
           else
             render json: @list.errors, status: :unprocessable_entity
         end
@@ -37,11 +37,11 @@ class ListsController < ApplicationController
         private
     
         def set_list
-        @list = List.find_by_id(params[:id])
+            @list = List.find(params[:id])
         end
         
         def list_params
-        params.require(:list).permit(:name)
+            params.require(:list).permit(:name, list_items_attributes: [:item_name, :item_price])
         end
 
 end

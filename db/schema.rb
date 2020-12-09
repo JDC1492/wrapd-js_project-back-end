@@ -15,8 +15,6 @@ ActiveRecord::Schema.define(version: 2020_12_06_202940) do
   create_table "list_items", force: :cascade do |t|
     t.string "item_name"
     t.float "item_price"
-    t.string "item_link"
-    t.boolean "item_obtained", default: false
     t.integer "list_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -24,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_12_06_202940) do
   end
 
   create_table "lists", force: :cascade do |t|
-    t.string "title"
+    t.string "name"
   end
 
   add_foreign_key "list_items", "lists"
