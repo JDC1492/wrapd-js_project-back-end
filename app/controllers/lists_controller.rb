@@ -25,8 +25,12 @@ class ListsController < ApplicationController
     end
 
     def update
-        
-    end
+        if @plist.update(list_params)
+          render json: @list
+        else
+          render json: @list.errors, status: :unprocessable_entity
+        end
+      end
 
     def destroy
         @list.destroy

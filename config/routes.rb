@@ -3,4 +3,9 @@ Rails.application.routes.draw do
 
   resources :lists
   resources :list_items
+
+    resources :lists do 
+      resources :list_items
+    end
+
 end
