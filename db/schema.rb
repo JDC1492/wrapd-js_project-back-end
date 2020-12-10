@@ -10,20 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_06_202940) do
+ActiveRecord::Schema.define(version: 0) do
 
-  create_table "list_items", force: :cascade do |t|
-    t.string "item_name"
-    t.float "item_price"
-    t.integer "list_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["list_id"], name: "index_list_items_on_list_id"
-  end
-
-  create_table "lists", force: :cascade do |t|
-    t.string "name"
-  end
-
-  add_foreign_key "list_items", "lists"
 end
