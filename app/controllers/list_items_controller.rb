@@ -20,6 +20,7 @@ class ListItemsController < ApplicationController
             render json: @list_item, status: :created, location: @list_item
         else
             render json: @list_item.errors, status: :unprocessable_entity
+        end
     end
 
     def update
@@ -33,15 +34,12 @@ class ListItemsController < ApplicationController
 
     private
     
-    def set_list_item
+        def set_list_item
         @list_item = ListItem.find_by(id: params[:id])
-    end
+         end
         
-    def list_item_params
+        def list_item_params
         params.require(:list_item).permit(:item_name, :item_price)
+        end
+
     end
-
-end
-
-    
-
