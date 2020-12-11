@@ -2,9 +2,14 @@ class ListItemsController < ApplicationController
         before_action :set_list_item, only: [:show, :update, :destroy]
 
     def index
+        if params[:list_id]
+            @list = List.find(params[:show_id])
+            @list_items = @list.list_items
+        else
         @list_items = ListItem.all
-        render json: @list_items.to_json(include: [:list], except: [:updated_at, :created_at])
-    end    
+    end 
+    render json: @list_items.to_json(include: [:list], except: [:updated_at, :created_at])
+    end   
 
     def show
         if @list_item
